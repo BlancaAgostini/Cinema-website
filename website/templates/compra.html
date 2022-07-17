@@ -1,0 +1,269 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://www.azteca5.com.mx/img/logo_nav.png" type="image/x-icon">
+    <title>Azteca 5</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div>
+            <figure class="logo">
+                <a href="/index.html">
+                    <img src="https://www.azteca5.com.mx/img/logo_nav.png" alt=""/>
+                </a>
+            </figure>
+            <ul class="navbar-options">
+                <li>
+                    <a href="/">Inicio</a>
+                </li>
+                <li>
+                    <a href="/">Precios</a>
+                </li>
+                <li>
+                    <a href="/">Anunciate</a>
+                </li>
+                <li>
+                    <a href="/">Contacto</a>
+                </li>
+                <li>
+                    <a href="/">Quejas</a>
+                </li>
+            </ul>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1200px-Search_Icon.svg.png" alt="search icon" class="search-icon"/>
+        </div>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="user icon" class="user-icon" />
+        </div>
+    </nav>
+    <form action="/asientos.html" method="GET">
+    <div class="main-section">
+        <div class="cards-container">
+            <h2 class="title-compra">Selecciona tus boletos</h2>
+            <div class="price-card">
+                <div class="arrows-number">
+                    <button type="button" class="arrow-subs" onclick="subtractAdult()">
+                        <img src="{{ url_for('static', filename='/Assets/less.png') }}" alt="flecha menos"/>
+                    </button>
+                    <input name="qty adulto" id="qty adulto" class="qty" style="border: none; background:none;" value="0" readonly></input>
+                    <button type="button" class="arrow-add" onclick="addAdulto()">
+                        <img src="{{ url_for('static', filename='/Assets/more.png') }}" alt="flecha mas"/>
+                    </button>
+                </div>
+                <p class="person-category">Adulto</p>
+                <p class="price">$35.00 c/u</p>
+            </div>
+            <div class="price-card">
+                <div class="arrows-number">
+                    <button type="button" class="arrow-subs" onclick="subtractSenior()">
+                        <img src="{{ url_for('static', filename='/Assets/less.png') }}" alt="flecha menos"/>
+                    </button>
+                    <input name="qty senior" id="qty senior" class="qty" style="border: none; background:none;" value="0" readonly></input>
+                    <button type="button" class="arrow-add" onclick="addSenior()">
+                        <img src="{{ url_for('static', filename='/Assets/more.png') }}" alt="flecha mas"/>
+                    </button>
+                </div>
+                <p class="person-category">Adulto mayor</p>
+                <p class="price">$30.00 c/u</p>
+            </div>
+            <div class="price-card">
+                <div class="arrows-number">
+                    <button type="button" class="arrow-subs" onclick="subtractChild()">
+                        <img src="{{ url_for('static', filename='/Assets/less.png') }}" alt="flecha menos"/>
+                    </button>
+                    <input name="qty child" id="qty child" class="qty" style="border: none; background:none;" value="0" readonly></input>
+                    <button type="button" class="arrow-add" onclick="addChild()">
+                        <img src="{{ url_for('static', filename='/Assets/more.png') }}" alt="flecha mas"/>
+                    </button>
+                </div>
+                <p class="person-category">Niño</p>
+                <p class="price">$25.00 c/u</p>
+            </div>
+            <div class="continue-btn">
+                <button id="continue-btn-hor" class="btn-compra" type="submit">Continuar</button>
+            </div>
+            <div class="total-card-horizontal">
+                <div class="total">
+                    <p>Total</p>
+                    <input id="total-price-hor" style="border: none; background:none;" readonly></input>
+                </div>
+            </div>
+        </div>
+        <div id="shopping-cart-compra" class="shopping-cart">
+            <h1 class="resumen-compra-h">Resumen de compra</h1>
+            <div class="shopping-cart-info">
+                <img src="https://s3.amazonaws.com/statics3.cinemex.com/movie_posters/IXmXWRN3oN47nVp-360x540.jpg" alt="fotografia pelicula" class="movie-pic-compra"/>
+                <div class="info">
+                    <h3>Thor: Amor y Trueno</h3>
+                    <p>Viernes 14 de Febrero</p>
+                    <p>8:15 PM</p>
+                    <p>Sala 4</p>
+                    <p>Español</p>
+                    <div class="ticket-container">
+                        <div class="ticket-boletos">
+                            <p>Boletos</p>
+                            <input id="qty tickets" name="qty tickets" style="border: none; background:none;" readonly></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div id="total-card-vertical" class="total-card">
+                    <div class="total">
+                        <p>Total a pagar</p>
+                        <input id="total-price" name="total-price" style="border: none; background:none;" readonly></input>
+                    </div>
+                </div>
+                <div id="continue-btn-vertical" class="continue-btn">
+                    <button type="submit" class="btn-compra">Continuar</button>
+                </div>
+            </div>
+        <div class="shopping-cart-horizontal">
+            <div class="shopping-cart-info">
+                <img src="https://s3.amazonaws.com/statics3.cinemex.com/movie_posters/IXmXWRN3oN47nVp-360x540.jpg" alt="fotografia pelicula" class="movie-pic-compra"/>
+                <div class="info">
+                    <h2>Thor: Amor y Trueno</h2>
+                    <p>Viernes 14 de Febrero</p>
+                    <p>8:15 PM</p>
+                    <p>Sala 4</p>
+                    <p>Español</p>
+                    <div class="ticket-container">
+                        <div class="ticket-boletos">
+                            <p>Boletos</p>
+                            <input id="qty tickets hor" style="border: none; background:none;" readonly></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <footer>
+        <div class="footer-info">
+            <div>
+                <p>Redes sociales</p>
+            </div>
+            <div>
+                <p>Apps móviles</p>
+            </div>
+        </div>
+        <div class="derechos-reservados">
+            <p>©2017 Multicinemas Azteca 5. Todos los derechos reservados</p>
+        </div>
+    </footer>
+</body>
+<script>
+    var total_qty = 0;
+    var total_price = 0;
+
+    function addAdulto() {
+        document.getElementById("qty adulto").value++;
+        total_qty++;
+        total_price += 35;
+        document.getElementById("total-price").value = "$" + total_price + ".00";
+        document.getElementById("total-price-hor").value = "$" + total_price + ".00";
+        if(total_qty > 0){
+            document.getElementById("total-card-vertical").style.display = "block";
+            document.getElementById("continue-btn-vertical").style.display = "block";
+            document.getElementById("continue-btn-vertical").style.display = "flex";
+            document.getElementById("continue-btn-hor").style.pointerEvents = "auto";
+            document.getElementById("continue-btn-hor").style.opacity = 1;
+        }
+        document.getElementById("qty tickets").value++;
+        document.getElementById("qty tickets hor").value++;
+    }
+
+    function addSenior() {
+        document.getElementById("qty senior").value++;
+        total_qty++;
+        total_price += 30;
+        document.getElementById("total-price").value = "$" + total_price + ".00";
+        document.getElementById("total-price-hor").value = "$" + total_price + ".00";
+        if(total_qty > 0){
+            document.getElementById("total-card-vertical").style.display = "block";
+            document.getElementById("continue-btn-vertical").style.display = "block";
+            document.getElementById("continue-btn-vertical").style.display = "flex";
+            document.getElementById("continue-btn-hor").style.pointerEvents = "auto";
+            document.getElementById("continue-btn-hor").style.opacity = 1;
+        }
+        document.getElementById("qty tickets").value++;
+        document.getElementById("qty tickets hor").value++;
+    }
+
+    function addChild() {
+        document.getElementById("qty child").value++;
+        total_qty++;
+        total_price += 25;
+        document.getElementById("total-price").value = "$" + total_price + ".00";
+        document.getElementById("total-price-hor").value = "$" + total_price + ".00";
+        if(total_qty > 0){
+            document.getElementById("total-card-vertical").style.display = "block";
+            document.getElementById("continue-btn-vertical").style.display = "block";
+            document.getElementById("continue-btn-vertical").style.display = "flex";
+            document.getElementById("continue-btn-hor").style.pointerEvents = "auto";
+            document.getElementById("continue-btn-hor").style.opacity = 1;
+        }
+        document.getElementById("qty tickets").value++;
+        document.getElementById("qty tickets hor").value++;
+    }
+
+    function subtractAdult() {
+        if(document.getElementById("qty adulto").value > 0){
+            document.getElementById("qty adulto").value--;
+            total_qty--;
+            total_price -= 35;
+            document.getElementById("total-price").value = "$" + total_price + ".00";
+            document.getElementById("total-price-hor").value = "$" + total_price + ".00";
+            document.getElementById("qty tickets").value--;
+            document.getElementById("qty tickets hor").value--;
+        }
+
+        if(total_qty == 0){
+            document.getElementById("total-card-vertical").style.display = "none";
+            document.getElementById("continue-btn-vertical").style.display = "none";
+            document.getElementById("continue-btn-hor").style.pointerEvents = "none";
+            document.getElementById("continue-btn-hor").style.opacity = 0.5;
+        }
+    }
+
+    function subtractSenior() {
+        if(document.getElementById("qty senior").value > 0){
+            document.getElementById("qty senior").value--;
+            total_qty--;
+            total_price -= 30;
+            document.getElementById("total-price").value = "$" + total_price + ".00";
+            document.getElementById("total-price-hor").value = "$" + total_price + ".00";
+            document.getElementById("qty tickets").value--;
+            document.getElementById("qty tickets hor").value--;
+        }
+        if(total_qty == 0){
+            document.getElementById("total-card-vertical").style.display = "none";
+            document.getElementById("continue-btn-vertical").style.display = "none";
+            document.getElementById("continue-btn-hor").style.pointerEvents = "none";
+            document.getElementById("continue-btn-hor").style.opacity = 0.5;
+        }
+    }
+
+    function subtractChild() {
+        if(document.getElementById("qty child").value > 0){
+            document.getElementById("qty child").value--;
+            total_qty--;
+            total_price -= 25;
+            document.getElementById("total-price").value = "$" + total_price + ".00";
+            document.getElementById("total-price-hor").value = "$" + total_price + ".00";
+            document.getElementById("qty tickets").value--;
+            document.getElementById("qty tickets hor").value--;
+        }
+        if(total_qty == 0){
+            document.getElementById("total-card-vertical").style.display = "none";
+            document.getElementById("continue-btn-vertical").style.display = "none";
+            document.getElementById("continue-btn-hor").style.pointerEvents = "none";
+            document.getElementById("continue-btn-hor").style.opacity = 0.5;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,409 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://www.azteca5.com.mx/img/logo_nav.png" type="image/x-icon">
+    <title>Azteca 5</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div>
+            <figure class="logo">
+                <a href="/index.html">
+                    <img src="https://www.azteca5.com.mx/img/logo_nav.png" alt=""/>
+                </a>
+            </figure>
+            <ul class="navbar-options">
+                <li>
+                    <a href="/">Inicio</a>
+                </li>
+                <li>
+                    <a href="/">Precios</a>
+                </li>
+                <li>
+                    <a href="/">Anunciate</a>
+                </li>
+                <li>
+                    <a href="/">Contacto</a>
+                </li>
+                <li>
+                    <a href="/">Quejas</a>
+                </li>
+            </ul>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1200px-Search_Icon.svg.png"
+                alt="search icon" class="search-icon" />
+        </div>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="user icon"
+                class="user-icon" />
+        </div>
+    </nav>
+    <form action="/create-checkout-session" method="POST">
+    <div class="main-section">
+        <div class="cards-container">
+            <div class="countdown-container">
+                <h2 class="title-asientos">Selecciona tus asientos</h2>
+                <p id="countdown"></p>
+            </div>
+
+            <div class="sala-overall-section">
+                <div class="row">
+                    <div class="legends-overall">
+                        <div class="legend-seats">
+                            <img src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" />
+                            <p>Disponible</p>
+                        </div>
+                        <div class="legend-seats">
+                            <img src="{{ url_for('static', filename='Assets/seat-taken.png') }}" alt="" />
+                            <p>Ocupado</p>
+                        </div>
+                        <div class="legend-seats">
+                            <img src="{{ url_for('static', filename='Assets/seat-selected.png') }}" alt="" />
+                            <p>Seleccionado</p>
+                        </div>
+                    </div>
+                    <div id="whitey" class="legends-overall">
+                        <div id="continue-btn-asiento" class="continue-btn">
+                            <button id="continue-horizontal" class="btn-compra" type="submit">Continuar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="sala-main-container">
+                    <div class="screen-container">
+                        <div class="screen"></div>
+                        <p style="text-align: center;">Pantalla</p>
+                    </div>
+                    <div id="alphabet" class="seat-container">
+                        <ul class="seat-row">
+                            <span class="row-letter">A</span>
+                            <li class="seat"><img id="A1" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt=""/></li>
+                            <li class="seat"><img id="A2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt=""/></li>
+                            <li class="seat"><img id="A3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="A12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">A</span>
+                        </ul>
+                        <ul class="seat-row">
+                            <span class="row-letter">B</span>
+                            <li class="seat"><img id="B1"src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="B12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">B</span>
+                        </ul>
+                        <ul class="seat-row">
+                            <span class="row-letter">C</span>
+                            <li class="seat"><img id="C1" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="C12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">C</span>
+                        </ul>
+                        <ul class="seat-row">
+                            <span class="row-letter">D</span>
+                            <li class="seat"><img id="D1" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="D12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">D</span>
+                        </ul>
+                        <ul class="seat-row">
+                            <span class="row-letter">E</span>
+                            <li class="seat"><img id="E1" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="E12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">E</span>
+                        </ul>
+                        <ul class="seat-row">
+                            <span class="row-letter">F</span>
+                            <li class="seat"><img id="F1" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="F12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">F</span>
+                        </ul>
+                        <ul class="seat-row">
+                            <span class="row-letter">G</span>
+                            <li class="seat"><img id="G1" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="G12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">G</span>
+                        </ul>
+                        <ul class="seat-row">
+                            <span class="row-letter">H</span>
+                            <li class="seat"><img id="H1" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="H12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">H</span>
+                        </ul>
+                        <ul class="seat-row">
+                            <span class="row-letter">I</span>
+                            <li class="seat"><img id="I1" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I2" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I3" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I4" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I5" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I6" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I7" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I8" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I9" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I10" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I11" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <li class="seat"><img id="I12" src="{{ url_for('static', filename='Assets/seat-free.png') }}" alt="" /></li>
+                            <span class="row-letter">I</span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="shopping-cart-asientos" class="shopping-cart">
+            <h1 class="resumen-compra-h">Resumen de compra</h1>
+            <div class="shopping-cart-info">
+                <img src="https://s3.amazonaws.com/statics3.cinemex.com/movie_posters/IXmXWRN3oN47nVp-360x540.jpg"
+                    alt="fotografia pelicula" class="movie-pic-compra" />
+                <div class="info">
+                    <h3>Thor: Amor y Trueno</h3>
+                    <p>Viernes 14 de Febrero</p>
+                    <p>8:15 PM</p>
+                    <p>Sala 4</p>
+                    <p>Español</p>
+                    <div class="ticket-container">
+                        <div class="ticket-boletos">
+                            <p>Boletos</p>
+                            <input name="total_tickets_qty" id="total_tickets_qty" value="{{ qty_tickets }}" style="border: none; background:none;" readonly></input>
+                            <input name="qty adulto" id="qty adulto" value="{{ qty_adulto }}" hidden></input>
+                            <input name="qty senior" id="qty senior" value="{{ qty_senior }}" hidden></input>
+                            <input name="qty child" id="qty child" value="{{ qty_child }}" hidden></input>
+                        </div>
+                        <div class="ticket-asientos">
+                            <p>Asientos</p>
+                            <p id="what-seats-vertical"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="total-card-vertical" class="total-card">
+                <div class="total">
+                    <p>Total a pagar</p>
+                    <p id="total-price"> {{  total_price }} </p>
+                </div>
+            </div>
+                <div id="continue-btn-vertical" class="continue-btn">
+                    <button class="btn-compra" type="submit">Continuar</button>
+                </div>
+            </div>
+        <div class="shopping-cart-horizontal">
+            <div class="shopping-cart-info">
+                <img src="https://s3.amazonaws.com/statics3.cinemex.com/movie_posters/IXmXWRN3oN47nVp-360x540.jpg"
+                    alt="fotografia pelicula" class="movie-pic-compra" />
+                <div class="info">
+                    <h2>Thor: Amor y Trueno</h2>
+                    <p>Viernes 14 de Febrero</p>
+                    <p>8:15 PM</p>
+                    <p>Sala 4</p>
+                    <p>Español</p>
+                    <div class="ticket-container">
+                        <div class="ticket-boletos">
+                            <p>Boletos</p>
+                            <input name="total_tickets_qty" id="total_tickets_qty" value="{{ qty_tickets }}" style="border: none; background:none;" readonly></input>
+                        </div>
+                        <div class="ticket-asientos">
+                            <p>Asientos</p>
+                            <p id="what-seats-horizontal"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <footer>
+        <div class="footer-info">
+            <div>
+                <p>Redes sociales</p>
+            </div>
+            <div>
+                <p>Apps móviles</p>
+            </div>
+        </div>
+        <div class="derechos-reservados">
+            <p>©2017 Multicinemas Azteca 5. Todos los derechos reservados</p>
+        </div>
+    </footer>
+</body>
+<script>
+    var total_tickets = document.getElementById("total_tickets_qty").value;
+    const current_seats = [];
+    const seats_to_print = [];
+
+    document.addEventListener('click', (e) => {
+        let element = e.target;
+        let element_id = e.target.id;
+
+        if(element.tagName == "IMG" && element.parentElement.nodeName == "LI"){
+
+            if(current_seats.length < total_tickets && !current_seats.includes(element_id)) {
+                
+                document.getElementById(element_id).src = "{{ url_for('static', filename='Assets/seat-selected.png') }}";
+                current_seats.unshift(element_id);
+                document.getElementById("what-seats-vertical").innerHTML = current_seats;
+                document.getElementById("what-seats-horizontal").innerHTML = current_seats;
+            }else if(current_seats.length == total_tickets && !current_seats.includes(element_id)) {
+                document.getElementById(element_id).src = "{{ url_for('static', filename='Assets/seat-selected.png') }}";
+                document.getElementById(current_seats[current_seats.length-1]).src = "{{ url_for('static', filename='Assets/seat-free.png') }}";
+                current_seats.pop();
+                current_seats.unshift(element_id);
+                document.getElementById("what-seats-vertical").innerHTML = current_seats;
+                document.getElementById("what-seats-horizontal").innerHTML = current_seats;
+            }
+
+            if(current_seats.length == total_tickets) {
+                document.getElementById("total-card-vertical").style.display = "block";
+                document.getElementById("continue-btn-vertical").style.display = "block";
+                document.getElementById("continue-btn-vertical").style.display = "flex";
+                document.getElementById("continue-horizontal").style.opacity = 1;
+                document.getElementById("continue-horizontal").style.pointerEvents = "auto";
+                document.getElementById("what-seats-vertical").innerHTML = current_seats;
+                document.getElementById("what-seats-horizontal").innerHTML = current_seats;
+            }
+        }
+    });
+
+    // Target time
+    var countDownDate = new Date().getTime() + 300000;
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+            
+        // Time calculations for minutes and seconds
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+        // Output the result
+        document.getElementById("countdown").innerHTML = minutes + "m " + seconds + "s ";
+            
+        // If the count down is over, redirect to error page
+        if (distance < 0) {
+            clearInterval(x);
+            window.location.href = "/error.html";
+        }
+    }, 1000);
+
+    /*
+    const seatA1 = document.getElementById('A1');
+    const seatA2 = document.getElementById('A2');
+    const seatA3 = document.getElementById('A3');
+
+    // always checking if the element is clicked, if so, do alert('hello')
+    seatA1.addEventListener("click", () => {
+        if(total_count < total_tickets) {
+            document.getElementById("A1").src = "/Assets/seat-selected.png";
+            total_count++;
+            current_seats.push("A1");
+        }else if(total_count == total_tickets) {
+            document.getElementById("A1").src = "/Assets/seat-selected.png";
+            document.getElementById(current_seats[current_seats.length-1]).src = "{{ url_for('static', filename='Assets/seat-free.png') }}";
+        }
+    });
+    seatA2.addEventListener("click", () => {
+        if(total_count < total_tickets) {
+            document.getElementById("A2").src = "/Assets/seat-selected.png";
+            total_count++;
+            current_seats.push("A2");
+        }
+    });
+    seatA3.addEventListener("click", () => {
+        if(total_count < total_tickets) {
+            document.getElementById("A3").src = "/Assets/seat-selected.png";
+            total_count++;
+            current_seats.push("A3");
+        }
+    });
+    
+    seatA7.addEventListener("click", () => {
+        if(total_count < total_tickets) {
+            document.getElementById("A7").src = "/Assets/seat-selected.png";
+            total_count++;
+        }
+    }); */
+
+</script>
+
+</html>

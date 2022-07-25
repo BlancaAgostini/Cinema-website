@@ -41,25 +41,18 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="user icon" class="user-icon" />
         </div>
     </nav>
-
-    <section class="error-container">
-        <img src="https://icon-library.com/images/4164a0c99d.png" alt="reloj" style="width: 200px;"/>
-        <h1>¡Lo sentimos!</h1>
-        <h1>Se acabó el tiempo de la sesión</h1>
-    </section>
-
-    <footer>
-        <div class="footer-info">
-            <div>
-                <p>Redes sociales</p>
-            </div>
-            <div>
-                <p>Apps móviles</p>
+    <div class="main-container" style="margin-top:100px; display:flex; align-items: center; justify-content: center;">
+        <div class="movie-card">
+            <img src="{{ movie.image }}" alt="movie poster"/>
+            <div class="movie-info">
+                <h4 class="title-movie">{{ movie.name }}</h4>
+                <p>{{ movie.genre }}</p>
+                <p>Duración: {{ movie.duration }}</p>
+                {% for show in movie.shows %}
+                    <a href="/compra/{{ show.id }}"><button type="button">{{ show.time }}</button></a>
+                {% endfor %}
             </div>
         </div>
-        <div class="derechos-reservados">
-            <p>©2017 Multicinemas Azteca 5. Todos los derechos reservados</p>
-        </div>
-    </footer>
+    </div>
 </body>
 </html>

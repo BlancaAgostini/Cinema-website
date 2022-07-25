@@ -3,12 +3,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://www.azteca5.com.mx/img/logo_nav.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://www.azteca5.com.mx/img/logo_nav.png" type="image/x-icon">
-    <title>Azteca 5</title>
 </head>
 <body>
     <nav class="navbar">
@@ -41,25 +44,18 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="user icon" class="user-icon" />
         </div>
     </nav>
-
-    <section class="error-container">
-        <img src="https://icon-library.com/images/4164a0c99d.png" alt="reloj" style="width: 200px;"/>
-        <h1>¡Lo sentimos!</h1>
-        <h1>Se acabó el tiempo de la sesión</h1>
-    </section>
-
-    <footer>
-        <div class="footer-info">
-            <div>
-                <p>Redes sociales</p>
+    <div class="success-container">
+        <h3 class="success-thanks">Gracias por tu compra, {{ customer.name }}!</h3>
+        <div class="success-resumen">
+            <div class="success-image">
+                <img src="{{movie.image}}"/>
             </div>
-            <div>
-                <p>Apps móviles</p>
+            <div class="success-details">
+                <p>Película: <strong class="success-info">{{ movie.name }}</strong></p>
+                <p>Hora: <strong class="success-info">{{ show_of_movie.time }}</strong></p>
+                <p>Asientos: <strong class="success-info">{{ session.metadata['seats_list'] }}</strong></p>
             </div>
         </div>
-        <div class="derechos-reservados">
-            <p>©2017 Multicinemas Azteca 5. Todos los derechos reservados</p>
-        </div>
-    </footer>
+    </div>
 </body>
 </html>

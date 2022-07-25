@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar peliculas</title>
+</head>
+<body>
+    <nav>
+        <ul style="list-style:none; display: flex; justify-content: end;">
+            <li style="margin-right: 30px;">
+                <a href="/admin.html">Agregar peliculas</a>
+            </li>
+            <li>
+                <a href="/addSalas.html">Agregar salas</a>
+            </li>
+        </ul>
+    </nav>
+    <form action="/admin.html" method="POST" style="justify-content: center; display: flex;">
+        <div style="display: flex; flex-direction:column; width:fit-content; align-items: center; margin-right:100px">
+            <label for="name">Movie name:</label>
+            <input type="text" id="name" name="name" style="margin-bottom:15px" required>
+
+            <label for="image">Image url:</label>
+            <input type="text" id="image" name="image" placeholder="https://example.com" style="margin-bottom:15px" required>
+
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" style="margin-bottom:15px" required>
+
+            <label for="duration">Duration:</label>
+            <input type="text" id="duration" name="duration" style="margin-bottom:30px" required>
+
+            <input type="submit" value="Save" style="margin-bottom:15px; background:rgb(19, 178, 19); color:white; border:none; width:60px;height:30px;border-radius:10px">
+        </div>
+
+        <div>
+            <div id="horario" style="width:500px">
+                <label for="numsala">Numero de sala:</label>
+                <input type="number" id="numsala" name="numsala" style="margin-bottom:15px" required>
+
+                <label for="horapeli">Hora:</label>
+                <input type="text" id="horapeli" name="horapeli" style="margin-bottom:15px" required>
+            </div>
+
+            <button type="button" onclick="add_more_fields()" style="display:flex; align-items: center;">Add more fields</button>
+            <input type="text" id="number-of-shows" name="number-of-shows" value="1" readonly>
+        </div>
+    </form>
+
+    <table style="display:flex; justify-content:center">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Duration</th>
+        </tr>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie.id }}</td>
+            <td>{{ movie.name }}</td>
+            <td>{{ movie.genre }}</td>
+            <td>{{ movie.duration }}</td>
+            <td>
+                <a href="/delete/{{ movie.id }}">Delete</a>
+                <br>
+                <a href="">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <table style="display:flex; justify-content:center">
+        <tr>
+            <th>ShowID</th>
+            <th>Hora</th>
+            <th>MovieID</th>
+            <th>SalaID</th>
+        </tr>
+        {% for show in shows %}
+        <tr>
+            <td>{{ show.id }}</td>
+            <td>{{ show.time }}</td>
+            <td>{{ show.movie_id }}</td>
+            <td>{{ show.cinemahall_id }}</td>
+            <td>
+                <a href="/deleteshow/{{ show.id }}">Delete</a>
+                <br>
+                <a href="">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+<script>
+    var count = 0;
+    function add_more_fields(){
+        html = '<label for="numsala">Numero de sala:</label>\
+            <input type="number" id="numsala" name="numsala'+count+'" style="margin-bottom:15px" required>\
+            <label for="horapeli">Hora:</label>\
+            <input type="text" id="horapeli" name="horapeli'+count+'" style="margin-bottom:15px" required>'
+        var form = document.getElementById('horario');
+        form.innerHTML += html;
+        document.getElementById('number-of-shows').value = count+2;
+        count += 1;
+    }
+</script>
+</html>

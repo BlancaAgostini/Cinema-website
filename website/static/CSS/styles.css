@@ -134,8 +134,8 @@ footer .derechos-reservados {
 }
 
 .primary-section .primary-info .primary-btns {
-    position: absolute;
-    bottom: 0;
+    position: static;
+    margin-top: 3%;
     padding-bottom: 50px;
 }
 
@@ -569,9 +569,16 @@ footer .derechos-reservados {
 }
 
 .total-card .total p:nth-child(2) {
-    font-size: 24px;
+    font-size: 20px;
     color: var(--primary-color);
     font-weight: 500;
+}
+
+.total-card .total #total-price {
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: 500;
+    width: 100px;
 }
 
 .seat-container .seat-row {
@@ -659,6 +666,11 @@ footer .derechos-reservados {
     font-weight: 400;
 }
 
+.ticket-container .ticket-boletos input,
+.ticket-container .ticket-asientos input {
+    font-size: 15px
+}
+
 .error-container {
     display: flex; 
     flex-direction: column; 
@@ -688,6 +700,41 @@ footer .derechos-reservados {
 
 #whitey {
     display: none;
+}
+
+.success-container {
+    height: 500px;
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Space Mono', monospace;
+    margin-top:4%;
+    margin-left:8%;
+    margin-right:8%;
+}
+
+.success-container .success-info {
+    color: var(--primary-color);
+}
+
+.success-container .success-thanks {
+    margin-bottom: 20px;
+}
+
+.success-container .success-resumen {
+    display: flex;
+}
+
+.success-container .success-image img {
+    width:110px; 
+    border-radius: 10px;
+}
+
+.success-container .success-details {
+    margin-top:20px;
+    margin-left:20px;
+}
+
+.success-container .success-details p {
+    font-size: 17px;
 }
 
 @media (max-width: 1200px) {
@@ -1014,5 +1061,9 @@ footer .derechos-reservados {
     #whitey {
         display: block;
         display: flex;
+    }
+    .ticket-container .ticket-boletos input, 
+    .ticket-container .ticket-asientos input {
+        font-size: 12px;
     }
 }

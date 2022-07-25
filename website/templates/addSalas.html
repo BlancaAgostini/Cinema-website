@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar salas</title>
+</head>
+<body>
+    <nav>
+        <ul style="list-style:none; display: flex; justify-content: end;">
+            <li style="margin-right: 30px;">
+                <a href="/admin.html">Agregar peliculas</a>
+            </li>
+            <li>
+                <a href="/addSalas.html">Agregar salas</a>
+            </li>
+        </ul>
+    </nav>
+    <form action="/addSalas.html" method="POST" style="justify-content: center; display: flex;">
+        <div style="display: flex; flex-direction:column; width:fit-content; align-items: center;">
+            <label for="numero-sala">Numero de sala:</label>
+            <input type="number" id="numero-sala" name="numero-sala" style="margin-bottom:15px">
+
+            <label for="seatsno">Number of seats:</label>
+            <input type="number" id="seatsno" name="seatsno" style="margin-bottom:30px">
+
+            <input type="submit" value="Save" style="margin-bottom:15px">
+        </div>
+    </form>
+
+    <table style="display:flex; justify-content:center">
+        <tr>
+            <th>SalaID</th>
+            <th>Numero sala</th>
+            <th>Seats number</th>
+        </tr>
+        {% for sala in salas %}
+        <tr>
+            <td>{{ sala.id }}</td>
+            <td>{{ sala.hall_number }}</td>
+            <td>{{ sala.total_seats }}</td>
+            <td>
+                <a href="">Delete</a>
+                <br>
+                <a href="">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

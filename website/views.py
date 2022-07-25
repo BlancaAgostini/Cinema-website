@@ -73,7 +73,7 @@ def checkout():
 
     return redirect(checkout_session.url, code=303)
 
-@views.route('/success', methods=['GET'])
+@views.route('/success?session_id={CHECKOUT_SESSION_ID}', methods=['GET'])
 def success():
     if request.method == 'GET':
         try:

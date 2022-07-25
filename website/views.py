@@ -8,7 +8,7 @@ from . import db
 
 views = Blueprint('views', __name__)
 stripe.api_key = 'sk_test_51LLwkYKKfRH6nq6FYChFWFAS1AtNd1FcwNEF8gDFoZeCLUHmU1QnPu3MeAq58cKgPPs1xNBRRJd0Gg1nhhbl5URs00lfFe36AX'
-YOUR_DOMAIN = 'https://moviesriobravo.herokuapp.com/'
+YOUR_DOMAIN = 'https://moviesriobravo.herokuapp.com'
 #'http://127.0.0.1:5000'
 
 # This function will run whenever we go to the route defined above

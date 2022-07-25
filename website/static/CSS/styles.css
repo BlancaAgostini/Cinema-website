@@ -261,15 +261,14 @@ footer .derechos-reservados {
 }
 
 .banner {
-    height: 130px;
     margin-left: 45px;
     margin-right: 45px;
+    margin-bottom: 45px;
     display: none;
 }
 
 .banner img {
     border-radius: 10px;
-    height: 100%;
     width: 100%;
 }
 
@@ -784,7 +783,6 @@ footer .derechos-reservados {
         grid-template-columns: 1fr;
     }
     .banner {
-        margin-bottom: 30px;
         display: block;
     }
     .movie-card {
@@ -897,9 +895,9 @@ footer .derechos-reservados {
         flex-direction: column;
     }
     .banner {
-        height: 100px;
         margin-left: 15px;
         margin-right: 15px;
+        margin-top: 70px;
     }
     .main-container {
         margin-left: 20px;

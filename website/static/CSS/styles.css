@@ -549,12 +549,13 @@ footer .derechos-reservados {
 
 .cards-container .total-card-horizontal .total p {
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 17px;
 }
 
-.cards-container .total-card-horizontal .total p:nth-child(2) {
+.cards-container .total-card-horizontal .total input {
     color: var(--primary-color);
     font-weight: 500;
+    font-size: 17px;
 }
 
 .total-card .total {

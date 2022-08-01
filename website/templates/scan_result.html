@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pass {
+            background: rgb(5, 161, 5);
+            width: 400px;
+            height: 100px;
+            border-radius: 10px;
+            color: white;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .dont-pass {
+            background: rgb(226, 43, 43);
+            width: 400px;
+            height: 100px;
+            border-radius: 10px;
+            color: white;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        @media (max-width: 640px) {
+            .pass {
+                width: 100%;
+            }
+            .dont-pass {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body onload="stateChange()">
+    {% if exists == 1 %}
+        <div id="result" class="pass">Pass</div>
+    {% elif exists == 0 %}
+        <div id="result" class="dont-pass">Do not pass</div>
+    {% endif %}
+</body>
+<script>
+    function stateChange() {
+    setTimeout(function () {
+        window.close();
+    }, 3500);
+}
+</script>
+</html>

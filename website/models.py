@@ -31,6 +31,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     bookings = db.relationship('Booking')
+    qrcodes = db.relationship('Qrcode')
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,3 +46,9 @@ class Showseat(db.Model):
     seat = db.Column(db.String(150))
     show_id = db.Column(db.Integer, db.ForeignKey('show.id'))
     booking_id = db.Column(db.Integer, db.ForeignKey('booking.id'))
+
+class Qrcode(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    code_message = db.Column(db.String(500))
+    isscanned = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

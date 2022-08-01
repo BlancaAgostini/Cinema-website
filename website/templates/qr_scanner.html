@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .result{
+          background-color: green;
+          color:#fff;
+          padding:20px;
+        }
+        .row{
+          display:flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col">
+            <div style="width:500px;" id="reader"></div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='html5-qrcode.min.js') }}"></script>
+<script type="text/javascript">
+    function onScanSuccess(qrCodeMessage) {
+        //validate_qr();
+        window.open("scan_result.html/" + qrCodeMessage);
+    }
+    function onScanError(errorMessage) {
+      //handle scan error
+    }
+    var html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess, onScanError);
+
+    // function validate_qr(){
+    //     var i = 0;
+    //     const text = "{{qrcode_list.id}}";
+    //     alert(text);
+    // }
+</script>
+</html>

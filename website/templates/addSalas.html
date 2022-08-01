@@ -19,10 +19,10 @@
     <form action="/addSalas.html" method="POST" style="justify-content: center; display: flex;">
         <div style="display: flex; flex-direction:column; width:fit-content; align-items: center;">
             <label for="numero-sala">Numero de sala:</label>
-            <input type="number" id="numero-sala" name="numero-sala" style="margin-bottom:15px">
+            <input type="number" id="numero-sala" name="numero-sala" style="margin-bottom:15px" required>
 
             <label for="seatsno">Number of seats:</label>
-            <input type="number" id="seatsno" name="seatsno" style="margin-bottom:30px">
+            <input type="number" id="seatsno" name="seatsno" style="margin-bottom:30px" required>
 
             <input type="submit" value="Save" style="margin-bottom:15px">
         </div>
@@ -40,7 +40,7 @@
             <td>{{ sala.hall_number }}</td>
             <td>{{ sala.total_seats }}</td>
             <td>
-                <a href="">Delete</a>
+                <a href="/deletehall/{{ sala.id }}">Delete</a>
                 <br>
                 <a href="">Update</a>
             </td>

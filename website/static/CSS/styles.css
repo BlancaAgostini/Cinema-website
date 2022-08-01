@@ -703,12 +703,12 @@ footer .derechos-reservados {
 }
 
 .success-container {
-    height: 500px;
     font-family: 'Quicksand', sans-serif;
     font-family: 'Space Mono', monospace;
-    margin-top:4%;
+    margin-top:3%;
     margin-left:8%;
     margin-right:8%;
+    margin-bottom: 70px;
 }
 
 .success-container .success-info {
@@ -735,6 +735,20 @@ footer .derechos-reservados {
 
 .success-container .success-details p {
     font-size: 17px;
+}
+
+.wrapper {
+    margin-left: 10%;
+}
+
+.wrapper .qr-code {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 1200px) {
@@ -1064,5 +1078,13 @@ footer .derechos-reservados {
     .ticket-container .ticket-boletos input, 
     .ticket-container .ticket-asientos input {
         font-size: 12px;
+    }
+    .success-container {
+        margin-top: 40px;
+    }
+    .wrapper {
+        margin-left: 0%;
+        display: flex;
+        justify-content: center;
     }
 }

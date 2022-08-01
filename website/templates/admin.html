@@ -4,10 +4,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar peliculas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 <body>
     <nav>
-        <ul style="list-style:none; display: flex; justify-content: end;">
+        <ul style="list-style:none; display: flex; justify-content: end; margin-right:20px">
             <li style="margin-right: 30px;">
                 <a href="/admin.html">Agregar peliculas</a>
             </li>
@@ -16,7 +17,7 @@
             </li>
         </ul>
     </nav>
-    <form action="/admin.html" method="POST" style="justify-content: center; display: flex;">
+    <form action="/admin.html" method="POST" style="display: flex; margin-left:20px">
         <div style="display: flex; flex-direction:column; width:fit-content; align-items: center; margin-right:100px">
             <label for="name">Movie name:</label>
             <input type="text" id="name" name="name" style="margin-bottom:15px" required>
@@ -25,21 +26,33 @@
             <input type="text" id="image" name="image" placeholder="https://example.com" style="margin-bottom:15px" required>
 
             <label for="genre">Genre:</label>
-            <input type="text" id="genre" name="genre" style="margin-bottom:15px" required>
+            <select id="genre" name="genre" style="width:100%; margin-bottom:15px" required>
+                <option value="none" selected disabled hidden>
+                    Select an Option
+                </option>
+                <option value="Comedia">Comedia</option>
+                <option value="Romance">Romance</option>
+                <option value="Acción">Acción</option>
+                <option value="Suspenso">Suspenso</option>
+                <option value="Terror">Terror</option>
+                <option value="Ciencia ficción">Ciencia ficción</option>
+                <option value="Drama">Drama</option>
+                <option value="Musical">Musical</option>
+              </select>
 
-            <label for="duration">Duration:</label>
-            <input type="text" id="duration" name="duration" style="margin-bottom:30px" required>
+            <label for="duration">Duration in minutes:</label>
+            <input type="number" id="duration" name="duration" style="margin-bottom:30px" required placeholder="120">
 
             <input type="submit" value="Save" style="margin-bottom:15px; background:rgb(19, 178, 19); color:white; border:none; width:60px;height:30px;border-radius:10px">
         </div>
 
         <div>
-            <div id="horario" style="width:500px">
+            <div id="horario" style="width:600px">
                 <label for="numsala">Numero de sala:</label>
                 <input type="number" id="numsala" name="numsala" style="margin-bottom:15px" required>
 
                 <label for="horapeli">Hora:</label>
-                <input type="text" id="horapeli" name="horapeli" style="margin-bottom:15px" required>
+                <input type="text" id="horapeli" name="horapeli" style="margin-bottom:15px" placeholder="5:15 PM" required>
             </div>
 
             <button type="button" onclick="add_more_fields()" style="display:flex; align-items: center;">Add more fields</button>
@@ -47,58 +60,91 @@
         </div>
     </form>
 
-    <table style="display:flex; justify-content:center">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Genre</th>
-            <th>Duration</th>
-        </tr>
+    <table class="table" style="width: auto;">
         {% for movie in movies %}
-        <tr>
-            <td>{{ movie.id }}</td>
-            <td>{{ movie.name }}</td>
-            <td>{{ movie.genre }}</td>
-            <td>{{ movie.duration }}</td>
-            <td>
-                <a href="/delete/{{ movie.id }}">Delete</a>
-                <br>
-                <a href="">Update</a>
-            </td>
-        </tr>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ movie.id }}</th>
+                <td>{{ movie.name }}</td>
+                <td>{{ movie.genre }}</td>
+                <td>{{ movie.duration }}</td>
+                <td>
+                    <a href="/delete/{{ movie.id }}">Delete</a>
+                    <br>
+                    <a href="/updatemovie/{{ movie.id }}">Update</a>
+                    <br>
+                    <a href="/addshow/{{ movie.id }}">Add Show</a>
+                </td>
+                <thead>
+                    <tr>
+                        <th scope="col">ShowID</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">MovieID</th>
+                        <th scope="col">SalaID</th>
+                    </tr>
+                </thead>
+                {% for show in movie.shows %}
+                    <tr>
+                        <th scope="row">{{ show.id }}</th>
+                        <td>{{ show.time }}</td>
+                        <td>{{ show.movie_id }}</td>
+                        <td>{{ show.cinemahall_id }}</td>
+                        <td>
+                            <a href="/deleteshow/{{ show.id }}">Delete</a>
+                            <br>
+                            <a href="">Update</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <td></td>
+            </tr>
+        </tbody>
         {% endfor %}
     </table>
 
-    <table style="display:flex; justify-content:center">
-        <tr>
-            <th>ShowID</th>
-            <th>Hora</th>
-            <th>MovieID</th>
-            <th>SalaID</th>
-        </tr>
-        {% for show in shows %}
-        <tr>
-            <td>{{ show.id }}</td>
-            <td>{{ show.time }}</td>
-            <td>{{ show.movie_id }}</td>
-            <td>{{ show.cinemahall_id }}</td>
-            <td>
-                <a href="/deleteshow/{{ show.id }}">Delete</a>
-                <br>
-                <a href="">Update</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <!-- <table class="table table-striped" style="width: auto;">
+        <thead>
+            <tr>
+                <th scope="col">ShowID</th>
+                <th scope="col">Hora</th>
+                <th scope="col">MovieID</th>
+                <th scope="col">SalaID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for show in shows %}
+            <tr>
+                <th scope="row">{{ show.id }}</th>
+                <td>{{ show.time }}</td>
+                <td>{{ show.movie_id }}</td>
+                <td>{{ show.cinemahall_id }}</td>
+                <td>
+                    <a href="/deleteshow/{{ show.id }}">Delete</a>
+                    <br>
+                    <a href="">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> -->
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script>
     var count = 0;
     function add_more_fields(){
         html = '<label for="numsala">Numero de sala:</label>\
             <input type="number" id="numsala" name="numsala'+count+'" style="margin-bottom:15px" required>\
             <label for="horapeli">Hora:</label>\
-            <input type="text" id="horapeli" name="horapeli'+count+'" style="margin-bottom:15px" required>'
+            <input type="text" id="horapeli" name="horapeli'+count+'" style="margin-bottom:15px" placeholder="5:15 PM" required>'
         var form = document.getElementById('horario');
         form.innerHTML += html;
         document.getElementById('number-of-shows').value = count+2;

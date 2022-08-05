@@ -1089,4 +1089,7 @@ footer .derechos-reservados {
         display: flex;
         justify-content: center;
     }
+    .seat-container .seat-row .seat {
+        margin: 2px;
+    }
 }

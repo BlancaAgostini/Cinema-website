@@ -65,7 +65,7 @@ def checkout():
                 line_items=line_items,
                 mode='payment',
                 success_url= YOUR_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
-                cancel_url= YOUR_DOMAIN + '/cancel.html',
+                cancel_url= YOUR_DOMAIN + '/home.html',
                 metadata={
                     'total_tickets' : total_tickets,
                     'seats_list' : seats_list,

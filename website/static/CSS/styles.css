@@ -353,6 +353,7 @@ footer .derechos-reservados {
 .arrow-add {
     border: none;
     cursor: pointer;
+    background: var(--body);
 }
 
 .arrow-subs {
@@ -367,6 +368,7 @@ footer .derechos-reservados {
 .arrow-add img {
     width: 25px;
     height: 25px;
+    border-radius: 6px;
     background-color: var(--white);
 }
 

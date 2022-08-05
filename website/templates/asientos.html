@@ -13,7 +13,7 @@
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 
-<body>
+<body onload="getTodaysDate()">
     <nav class="navbar">
         <div>
             <figure class="logo">
@@ -109,7 +109,7 @@
                     alt="fotografia pelicula" class="movie-pic-compra" />
                 <div class="info">
                     <h3>{{ movie.name }}</h3>
-                    <p>Viernes 14 de Febrero</p>
+                    <p id="date-vertical">Viernes 14 de Febrero</p>
                     <p>{{ show.time }}</p>
                     <p>Sala {{ show.cinemahall_id }}</p>
                     <input name="show_id" id="show_id" value="{{ show.id }}" hidden/>
@@ -145,7 +145,7 @@
                     alt="fotografia pelicula" class="movie-pic-compra" />
                 <div class="info">
                     <h2>{{ movie.name }}</h2>
-                    <p>Viernes 14 de Febrero</p>
+                    <p id="date-hor">Viernes 14 de Febrero</p>
                     <p>{{ show.time }}</p>
                     <p>Sala {{ show.cinemahall_id }}</p>
                     <p>Español</p>
@@ -239,6 +239,59 @@
         }
     }, 1000);
 
+    function getTodaysDate() {
+        const today = new Date();
+        var day = today.getDay(); // Weekday 0 -Sunday
+        var dd = today.getDate(); // Day Number
+        var month = today.getMonth()+1; // Month 0 - January
+
+        if(day == 0){
+            day = 'Domingo'
+        }else if(day == 1){
+            day = 'Lunes'
+        }else if(day == 2){
+            day = 'Martes'
+        }else if(day == 3){
+            day = 'Miércoles'
+        }else if(day == 4){
+            day = 'Jueves'
+        }else if(day == 5){
+            day = 'Viernes'
+        }else if(day == 6){
+            day = 'Sábado'
+        }
+
+        if(month == 1){
+            month = 'Enero'
+        }else if(month == 2){
+            month = 'Febrero'
+        }else if(month == 3){
+            month = 'Marzo'
+        }else if(month == 4){
+            month = 'Abril'
+        }else if(month == 5){
+            month = 'Mayo'
+        }else if(month == 6){
+            month = 'Junio'
+        }else if(month == 7){
+            month = 'Julio'
+        }else if(month == 8){
+            month = 'Agosto'
+        }else if(month == 9){
+            month = 'Septiembre'
+        }else if(month == 10){
+            month = 'Octubre'
+        }else if(month == 11){
+            month = 'Noviembre'
+        }else if(month == 12){
+            month = 'Diciembre'
+        }
+
+        if(dd<10) dd='0'+dd;
+
+        document.getElementById('date-vertical').innerHTML = day + " " + dd + " de " + month;
+        document.getElementById('date-hor').innerHTML = day + " " + dd + " de " + month;
+    }
 </script>
 
 </html>

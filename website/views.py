@@ -10,9 +10,9 @@ from decouple import config
 
 views = Blueprint('views', __name__)
 stripe.api_key = config('STRIPE_SECRET_KEY')
-YOUR_DOMAIN = 'http://127.0.0.1:5000'
+YOUR_DOMAIN = 'https://cinema-website-five.vercel.app'
 # QA 'http://127.0.0.1:5000'
-# PROD https://moviesriobravo.herokuapp.com
+# PROD https://moviesriobravo.herokuapp.com || https://cinema-website-five.vercel.app/
 
 # This function will run whenever we go to the route defined above
 @views.route('/')

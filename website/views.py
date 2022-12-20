@@ -9,7 +9,7 @@ import random
 
 views = Blueprint('views', __name__)
 stripe.api_key = 'sk_test_51LLwkYKKfRH6nq6FYChFWFAS1AtNd1FcwNEF8gDFoZeCLUHmU1QnPu3MeAq58cKgPPs1xNBRRJd0Gg1nhhbl5URs00lfFe36AX'
-YOUR_DOMAIN = 'https://moviesriobravo.herokuapp.com'
+YOUR_DOMAIN = 'http://127.0.0.1:5000'
 # QA 'http://127.0.0.1:5000'
 # PROD https://moviesriobravo.herokuapp.com
 
@@ -231,7 +231,8 @@ def salas():
 
     else:
         salas = Cinemahall.query.order_by(Cinemahall.id)
-        return render_template('addSalas.html', salas=salas)
+        showseats = Showseat.query.filter_by(show_id=6).all()
+        return render_template('addSalas.html', salas=salas, showseats=showseats)
 
 @views.route('main_movie_shows.html')
 def main_movie_shows():

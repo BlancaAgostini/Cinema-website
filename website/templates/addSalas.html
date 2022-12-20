@@ -47,6 +47,18 @@
         </tr>
         {% endfor %}
     </table>
-
-</body>
+    
+    <table> 
+    <tr>
+        <th>SalaID</th>
+        <th>Numero sala</th>
+    </tr>
+    {% for show in showseats %}
+    <tr>
+        <td>{{ show.status }}</td>
+        <td>{{ show.seat }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+</body> 
 </html>

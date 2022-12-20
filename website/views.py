@@ -6,9 +6,10 @@ import stripe
 from .models import Cinemahall, Movie, Qrcode, Show, User, Booking, Showseat
 from . import db
 import random
+from decouple import config
 
 views = Blueprint('views', __name__)
-stripe.api_key = 'sk_test_51LLwkYKKfRH6nq6FYChFWFAS1AtNd1FcwNEF8gDFoZeCLUHmU1QnPu3MeAq58cKgPPs1xNBRRJd0Gg1nhhbl5URs00lfFe36AX'
+stripe.api_key = config('STRIPE_SECRET_KEY')
 YOUR_DOMAIN = 'http://127.0.0.1:5000'
 # QA 'http://127.0.0.1:5000'
 # PROD https://moviesriobravo.herokuapp.com
